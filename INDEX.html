@@ -142,4 +142,71 @@
     </footer>
     <script src="script.js"></script>
 </body>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Playlist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .video-container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .video-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .video-list li {
+            margin: 5px 0;
+        }
+
+        .video-list a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        .video-list a:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <iframe id="video-player" width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1&autoplay=1&showinfo=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="video-list">
+        <ul>
+            <li><a href="#" data-video-id="dQw4w9WgXcQ">Rick Astley - Never Gonna Give You Up</a></li>
+            <li><a href="#" data-video-id="3JZ_D3ELwOQ">Charlie Puth - We Don't Talk Anymore</a></li>
+            <li><a href="#" data-video-id="L_jWHffIx5E">Michael Jackson - Billie Jean</a></li>
+            <!-- Añade más videos según sea necesario -->
+        </ul>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const videoPlayer = document.getElementById('video-player');
+            const videoLinks = document.querySelectorAll('.video-list a');
+
+            videoLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const videoId = this.getAttribute('data-video-id');
+                    videoPlayer.src = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&autoplay=1&showinfo=0`;
+                });
+            });
+        });
+    </script>
+</body>
 </html>
